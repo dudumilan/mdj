@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'head' %}
+<meta name="description" content="Aqui é a página Contato">
+<meta name="keywords" content="Contato">
+
+    <style>
+        body{
+            background-color: red;
+        }
+    </style>
+{% endblock %}
+
+{% block 'title' %}Página de Contato{% endblock %}
+
+{% block 'body' %}
+<br><br><br><br><br><br><br><br>
+    <h1>CONTATO</h1>
+    <p>{{nome}}</p>
+    <a>{{idade}}</a>
+
+{% endblock %}

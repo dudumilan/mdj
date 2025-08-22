@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pessoas</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #f3f3f3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Pessoas</h1>
+    {% if pessoas %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Data de Nascimento</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pessoa in pessoas %}
+                    <tr>
+                        <td><a href="{% url 'detalhe_pessoa' pessoa.id %}">{{ pessoa.nome }}</a></td>
+                        <td>{{ pessoa.email }}</td>
+                        <td>{{ pessoa.cpf }}</td>
+                        <td>{{ pessoa.data_nascimento|date:"d/m/Y" }}</td>
+                        <td>{{ pessoa.telefone }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhuma pessoa cadastrada.</p>
+    {% endif %}
+</body>
+</html>
