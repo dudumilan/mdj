@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes de {{ pessoa.nome }}</title>
+</head>
+<body>
+    <h1>Detalhes da Pessoa</h1>
+    <ul>
+        <li><strong>Nome:</strong> {{ pessoa.nome }}</li>
+        <li><strong>Email:</strong> {{ pessoa.email }}</li>
+        <li><strong>CPF:</strong> {{ pessoa.cpf }}</li>
+        <li><strong>Data de Nascimento:</strong> {{ pessoa.data_nascimento|date:"d/m/Y" }}</li>
+        <li><strong>Telefone:</strong> {{ pessoa.telefone }}</li>
+        <li><strong>Endereço:</strong> {{ pessoa.endereco }}</li>
+        <li><strong>Criado em:</strong> {{ pessoa.criado_em|date:"d/m/Y H:i" }}</li>
+        <li><strong>Atualizado em:</strong> {{ pessoa.atualizado_em|date:"d/m/Y H:i" }}</li>
+    </ul>
+
+    <p><a href="{% url 'lista_pessoas' %}">← Voltar para lista</a></p>
+</body>
+</html>
