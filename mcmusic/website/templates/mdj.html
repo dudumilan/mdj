@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Layout com Carrossel</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: white;
+    }
+
+    /* Topo */
+    .top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: #111;
+      border-bottom: 2px solid #fff;
+    }
+
+    .top-bar-left,
+    .top-bar-right {
+      font-size: 1.2rem;
+    }
+
+    /* Carrossel */
+    .carousel-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    .gradient-left,
+    .gradient-right {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      z-index: 2;
+    }
+
+    .gradient-left {
+      left: 0;
+      background: linear-gradient(to right, #000, transparent);
+    }
+
+    .gradient-right {
+      right: 0;
+      background: linear-gradient(to left, #000, transparent);
+    }
+
+    .game-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .game {
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .main-game {
+      width: 800px;
+      height: 450px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+      z-index: 1;
+    }
+
+    .side-game {
+      width: 250px;
+      height: 400px;
+      opacity: 0.6;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: white;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      cursor: pointer;
+      z-index: 3;
+      padding: 0 10px;
+    }
+
+    .arrow-left {
+      left: 10px;
+    }
+
+    .arrow-right {
+      right: 10px;
+    }
+
+    /* Botão categorias */
+    .categories-button {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0 20px;
+    }
+
+    .categories-button button {
+      border: 2px solid white;
+      background: none;
+      color: white;
+      padding: 10px 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    /* Blocos de categorias */
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding-bottom: 40px;
+    }
+
+    .category {
+      border: 2px solid white;
+      padding: 40px;
+      font-size: 1.2rem;
+      text-align: center;
+      background-color: #111;
+      width: 150px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 1024px) {
+      .main-game {
+        width: 600px;
+        height: 340px;
+      }
+
+      .side-game {
+        width: 180px;
+        height: 300px;
+      }
+
+      .category {
+        padding: 20px;
+        width: 100px;
+        height: 80px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .carousel-container {
+        flex-direction: column;
+      }
+
+      .game-display {
+        flex-direction: row;
+        overflow-x: auto;
+      }
+
+      .categories {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topo -->
+  <div class="top-bar">
+    <div class="top-bar-left">☰ jogos</div>
+    <div class="top-bar-right">( ⊃ ) P</div>
+  </div>
+
+  <!-- Carrossel -->
+  <div class="carousel-section">
+    <div class="gradient-left"></div>
+    <div class="gradient-right"></div>
+
+    <button class="arrow arrow-left" onclick="prevGame()">&#x25C0;</button>
+
+    <div class="carousel-container">
+      <div class="game-display" id="gameDisplay"></div>
+    </div>
+
+    <button class="arrow arrow-right" onclick="nextGame()">&#x25B6;</button>
+  </div>
+
+  <!-- Botão categorias -->
+  <div class="categories-button">
+    <button>categorias</button>
+  </div>
+
+  <!-- Blocos de categorias -->
+  <div class="categories">
+    <div class="category">categoria 1</div>
+    <div class="category">categoria 2</div>
+    <div class="category">categoria 3</div>
+  </div>
+
+  <script>
+    const games = [
+      {
+        title: "EA SPORTS FC 25",
+        image: ""
+      },
+      {
+        title: "Mortal Kombat",
+        image: ""
+      },
+      {
+        title: "Street fighters",
+        image: ""
+      },
+      {
+        title: "Among Us",
+        image: ""
+      }
+    ];
+
+    let currentIndex = 0;
+
+    function renderGames() {
+      const display = document.getElementById("gameDisplay");
+      display.innerHTML = '';
+
+      const prevIndex = (currentIndex - 1 + games.length) % games.length;
+      const nextIndex = (currentIndex + 1) % games.length;
+
+      const prevGame = games[prevIndex];
+      const mainGame = games[currentIndex];
+      const nextGame = games[nextIndex];
+
+      const prevDiv = document.createElement("div");
+      prevDiv.className = "game side-game";
+      prevDiv.style.backgroundImage = `url('${prevGame.image}')`;
+      display.appendChild(prevDiv);
+
+      const mainDiv = document.createElement("div");
+      mainDiv.className = "game main-game";
+      mainDiv.style.backgroundImage = `url('${mainGame.image}')`;
+      display.appendChild(mainDiv);
+
+      const nextDiv = document.createElement("div");
+      nextDiv.className = "game side-game";
+      nextDiv.style.backgroundImage = `url('${nextGame.image}')`;
+      display.appendChild(nextDiv);
+    }
+
+    function nextGame() {
+      currentIndex = (currentIndex + 1) % games.length;
+      renderGames();
+    }
+
+    function prevGame() {
+      currentIndex = (currentIndex - 1 + games.length) % games.length;
+      renderGames();
+    }
+
+    renderGames();
+  </script>
+
+</body>
+</html>
