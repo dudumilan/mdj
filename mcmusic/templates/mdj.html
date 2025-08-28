@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -231,24 +233,26 @@
   </div>
 
   <script>
+    
     const games = [
-      {
-        title: "EA SPORTS FC 25",
-        image: ""
-      },
-      {
-        title: "Mortal Kombat",
-        image: ""
-      },
-      {
-        title: "Street fighters",
-        image: ""
-      },
-      {
-        title: "Among Us",
-        image: ""
-      }
-    ];
+    {
+      title: "EA SPORTS FC 25",
+      image: "{% static 'img/fc25.jpg' %}"
+    },
+    {
+      title: "Mortal Kombat",
+      image: "{% static 'img/mk1.jpg' %}"
+    },
+    {
+      title: "Street fighters",
+      image: "{% static 'img/sf.jpg' %}"
+    },
+    {
+      title: "Among Us",
+      image: "{% static 'img/amongus.jpg' %}"
+    }
+  ];
+
 
     let currentIndex = 0;
 
