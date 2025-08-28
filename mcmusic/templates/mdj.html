@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,7 +18,6 @@
       color: white;
     }
 
-    /* Topo */
     .top-bar {
       width: 100%;
       display: flex;
@@ -35,7 +33,6 @@
       font-size: 1.2rem;
     }
 
-    /* Carrossel */
     .carousel-section {
       display: flex;
       justify-content: center;
@@ -125,7 +122,6 @@
       right: 10px;
     }
 
-    /* Botão categorias */
     .categories-button {
       display: flex;
       justify-content: center;
@@ -141,7 +137,6 @@
       cursor: pointer;
     }
 
-    /* Blocos de categorias */
     .categories {
       display: flex;
       justify-content: center;
@@ -200,13 +195,11 @@
 </head>
 <body>
 
-  <!-- Topo -->
   <div class="top-bar">
     <div class="top-bar-left">☰ jogos</div>
     <div class="top-bar-right">( ⊃ ) P</div>
   </div>
 
-  <!-- Carrossel -->
   <div class="carousel-section">
     <div class="gradient-left"></div>
     <div class="gradient-right"></div>
@@ -220,12 +213,10 @@
     <button class="arrow arrow-right" onclick="nextGame()">&#x25B6;</button>
   </div>
 
-  <!-- Botão categorias -->
   <div class="categories-button">
     <button>categorias</button>
   </div>
 
-  <!-- Blocos de categorias -->
   <div class="categories">
     <div class="category">categoria 1</div>
     <div class="category">categoria 2</div>
@@ -233,26 +224,24 @@
   </div>
 
   <script>
-    
     const games = [
-    {
-      title: "EA SPORTS FC 25",
-      image: "{% static 'img/fc25.jpg' %}"
-    },
-    {
-      title: "Mortal Kombat",
-      image: "{% static 'img/mk1.jpg' %}"
-    },
-    {
-      title: "Street fighters",
-      image: "{% static 'img/sf.jpg' %}"
-    },
-    {
-      title: "Among Us",
-      image: "{% static 'img/amongus.jpg' %}"
-    }
-  ];
-
+      {
+        title: "EA SPORTS FC 25",
+        image: "{% static 'img/fc25.jpg' %}"
+      },
+      {
+        title: "Mortal Kombat",
+        image: "{% static 'img/mk1.jpg' %}"
+      },
+      {
+        title: "Street fighters",
+        image: "{% static 'img/sf.jpg' %}"
+      },
+      {
+        title: "Among Us",
+        image: "{% static 'img/amongus.jpg' %}"
+      }
+    ];
 
     let currentIndex = 0;
 
