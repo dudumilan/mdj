@@ -1,0 +1,21 @@
+<h2>Registrar Usuário</h2>
+{% if erro %}<p style="color:red;">{{ erro }}</p>{% endif %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Apelido:</label>
+    <input type="text" name="apelido"><br>
+    <label>Usuário:</label>
+    <input type="text" name="username"><br>
+    <label>Email:</label>
+    <input type="email" name="email"><br>
+    <label>Senha:</label>
+    <input type="password" name="password1"><br>
+    <label>Confirme a senha:</label>
+    <input type="password" name="password2"><br>
+    <label>Bio:</label><br>
+    <textarea name="bio" rows="4" cols="40"></textarea><br>
+    <label>Avatar:</label>
+    <input type="file" name="avatar"><br>
+    <button type="submit">Registrar</button>
+</form>
+<a href="{% url 'login' %}">Já tenho conta</a>

@@ -1,0 +1,13 @@
+<h2>Área Restrita</h2>
+<p>Bem-vindo, {{ user.username }}!</p>
+<p>Email: {{ user.email }}</p>
+<p>Bio: {{ user.bio }}</p>
+<p>Apelido: {{ user.apelido }}</p>
+
+{% if user.avatar %}
+    <img src="{{ user.avatar.url }}" alt="Avatar" width="150">
+{% else %}
+    <p>Sem avatar.</p>
+{% endif %}
+
+<a href="{% url 'logout.html' %}">Sair</a>

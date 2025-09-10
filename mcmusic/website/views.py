@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from .models import Pessoa
 # Create your views here.
 def home(request):
@@ -12,8 +12,10 @@ def contato(request):
 
 def contato2(request, nome):    
     idade = "17"
-
     return render(request, 'contato.html', {'nome': nome, "idade": idade})
+
+def contato(request):
+    return render(request, 'contato.html')
 
 
 
@@ -25,3 +27,4 @@ def lista_pessoas(request):
 def detalhe_pessoa(request, id):
     pessoa = get_object_or_404(Pessoa, id=id)
     return render(request, 'pessoa_detalhe.html', {'pessoa': pessoa})
+
