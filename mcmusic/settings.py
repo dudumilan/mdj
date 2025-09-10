@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mcmusic.website.apps.WebsiteConfig',
+    'mcmusic.exposicoes.apps.WebsiteConfig',
     'mcmusic.usuarios.apps.UsuariosConfig',
+    'exposicoes',
 ]
 
 MIDDLEWARE = [

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mcmusic.website.models import Pessoa
+from mcmusic.exposicoes.models import Pessoa
 # Register your models here.
 
 class PessoaModelAdmin(admin.ModelAdmin):
