@@ -146,6 +146,7 @@ body {
   }
 
   .game {
+    
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -153,6 +154,7 @@ body {
   }
 
   .main-game {
+    background-image: url(../img/castel.png);
     width: 800px;
     height: 450px;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
@@ -160,6 +162,7 @@ body {
   }
 
   .side-game {
+    background-image: url(../img/among.avif);
     width: 250px;
     height: 400px;
     opacity: 0.6;
