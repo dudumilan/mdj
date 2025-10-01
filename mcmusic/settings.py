@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mcmusic.exposicoes.apps.ExposicoesConfig', 
     'mcmusic.usuarios.apps.UsuariosConfig',
+    'exposicoes',
 ]
 
 MIDDLEWARE = [

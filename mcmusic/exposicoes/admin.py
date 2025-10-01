@@ -1,6 +1,14 @@
 from django.contrib import admin
 from mcmusic.exposicoes.models import Pessoa
+from exposicoes.models import Slideshow
 # Register your models here.
+
+class SlideshowModelAdmin(admin.ModelAdmin):
+    list_display = ['titulo','imagem','alt','descricao',]
+    search_fields = ('titulo',)
+
+
+admin.site.register(Slideshow,SlideshowModelAdmin)
 
 class PessoaModelAdmin(admin.ModelAdmin):
     list_display = ('nome', 'email', 'cpf', 'telefone', 'data_nascimento', 'criado_em')
