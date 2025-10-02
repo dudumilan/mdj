@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from exposicoes.models import Slideshow
+from mcmusic.exposicoes.models import Slideshow
 
 def home(request):
     slideshows = Slideshow.objects.all()

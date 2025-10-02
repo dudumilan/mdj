@@ -1,6 +1,6 @@
 from django.contrib import admin
 from mcmusic.exposicoes.models import Pessoa
-from exposicoes.models import Slideshow
+from mcmusic.exposicoes.models import Slideshow
 # Register your models here.
 
 class SlideshowModelAdmin(admin.ModelAdmin):
