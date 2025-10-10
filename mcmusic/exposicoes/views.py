@@ -3,7 +3,7 @@ from mcmusic.exposicoes.models import Slideshow
 
 def home(request):
     slideshows = Slideshow.objects.all()
-    return render(request,'index.html',{'slideshows':slideshows})   
+    return render(request,'index.html',{'slideshows':slideshows})
 
 def index(request):
     return render(request, 'index.html')
