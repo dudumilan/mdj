@@ -1,39 +1,4 @@
 window.addEventListener("load", function() {
-const games = [
-    {
-      title: "Super Mario Bros",
-      image: "{% static 'img/mario.png' %}"
-    },
-    {
-      title: "The Legend of Zelda",
-      image: "{% static 'img/zelda.png' %}"
-    },
-    {
-      title: "Street fighters II",
-      image: "{% static 'img/street fighter.png' %}"
-    },
-    {
-      title: "Sonic the Hedgehog",
-      image: "{% static 'img/sonic.jpg' %}"
-    },
-    {
-      title: "Donkey Kong Country",
-      image: "{% static 'img/kong.png' %}"
-    },
-    {
-      title: "Mortal Kombat",
-      image: "{% static 'img/mk.jpg' %}"
-    },
-    {
-      title: "Mega Man 2",
-      image: "{% static 'img/megaman.jpg' %}"
-    },
-    {
-      title: "Castlevania",
-      image: "{% static 'img/castel.png' %}"
-    },
-  ];
-
   let currentIndex = 0;
 
   function renderGames() {
@@ -74,5 +39,4 @@ const games = [
   }
 
   renderGames();
-
 });
