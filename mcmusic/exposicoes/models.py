@@ -16,6 +16,13 @@ class Slideshow(models.Model):
 
     def __str__(self):
         return self.titulo
+class Jogo(models.Model):
+    nome = models.CharField(max_length=100)
+    descricao = models.TextField(blank=True, null=True)
+    lancamento = models.DateField(blank=True, null=True)
+    
+    def __str__(self):
+        return self.nome
 
 class Pessoa(models.Model):
     nome = models.CharField(max_length=100)
@@ -30,3 +37,5 @@ class Pessoa(models.Model):
 
     def __str__(self):
         return self.nome
+    
+    

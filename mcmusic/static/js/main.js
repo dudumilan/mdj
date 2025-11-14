@@ -29,7 +29,7 @@ function renderGames() {
     const mainDiv = document.createElement("div");
     mainDiv.className = "game main-game";
     mainDiv.style.backgroundImage = `url('${mainGame.image}')`;
-    mainDiv.onclick = () => openPortal(`/jogo/${mainGame.id}/`);
+    mainDiv.onclick = () => openPortal(`/jogo/${mainGame.id}/`, mainGame.image);
     display.appendChild(mainDiv);
 
     const nextDiv = document.createElement("div");

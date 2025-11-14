@@ -1,5 +1,14 @@
 from django.shortcuts import render
 from mcmusic.exposicoes.models import Slideshow
+from django.shortcuts import render, get_object_or_404
+from .models import Slideshow
+from .models import Jogo
+
+
+
+def jogo_detalhe(request, id):
+    jogo = get_object_or_404(Slideshow, id=id)
+    return render(request, 'jogo_detalhe.html', {'jogo': jogo})
 
 def home(request):
     slideshows = Slideshow.objects.all()
