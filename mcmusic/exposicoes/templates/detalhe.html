@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>{{ slide.titulo }}</h1>
+<img src="{{ slide.imagem.url }}" style="width:300px;border-radius:10px">
+
+<p>Aqui vai o conteúdo do jogo selecionado.</p>
+
+{% endblock %}

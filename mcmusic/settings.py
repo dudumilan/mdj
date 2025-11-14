@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mcmusic.exposicoes.apps.ExposicoesConfig', 
+    'mcmusic.exposicoes.apps.ExposicoesConfig',
     'mcmusic.usuarios.apps.UsuariosConfig',
 ]
 
@@ -56,13 +56,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mcmusic.urls'
 
-#        'DIRS': [os.path.join(BASE_DIR, 'templates')],
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         #'DIRS': [],
-        'DIRS': [os.path.join(BASE_DIR, 'mcmusic','templates')],
+        'DIRS': [
+        os.path.join(BASE_DIR, 'mdj', 'templates'),
+        os.path.join(BASE_DIR, 'mcmusic', 'templates'),
+                ],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,6 +78,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mcmusic.wsgi.application'
+
 
 
 # Database

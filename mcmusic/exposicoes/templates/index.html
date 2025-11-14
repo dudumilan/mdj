@@ -1,62 +1,62 @@
 {% extends 'base.html' %}
 {% load static %}
-{%block 'head'%}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-{%endblock %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/portal.css' %}">
+{% endblock %}
+
 {% block content %}
 
-<!-- SLIDESHOW-->
-   <div class="top-bar">
-        <div class="top-bar-left">Jogos</div>
-        <div
-         <i style="font-size: 30px;" class="bi bi-person-fill"></i>
-        </div>
-      </div>
-    
-      <div class="carousel-section">
-        <div class="gradient-left"></div>
-        <div class="gradient-right"></div>
-    
-        <button class="arrow arrow-left" onclick="prevGame()">&#x25C0;</button>
-    
-        <div class="carousel-container">
-          <div class="game-display" id="gameDisplay">            
-          </div>
-        </div>
-        
-        <div>
-        <button class="arrow arrow-right" onclick="nextGame()">&#x25B6;</button>
-        </div>
-      </div>
-    
-      <div class="categories-button">
-        <button>categorias</button>
-      </div>
-    
-      <div class="categories">
-        <div class="category">categoria 1</div>
-        <div class="category">categoria 2</div>
-        <div class="category">categoria 3</div>
-      </div>
+<div class="top-bar">
+    <div class="top-bar-left">Jogos</div>
+    <div>
+        <i style="font-size: 30px;" class="bi bi-person-fill"></i>
+    </div>
+</div>
 
-    <section class="hero">
-        <div class="container">
-            <h2>Explore a História dos Videogames</h2>
-        </div>
-    </section>
+<div class="carousel-section">
+    <div class="gradient-left"></div>
+    <div class="gradient-right"></div>
 
-    <script>
-  // Gera o array dinamicamente no template
-  const games = [
+    <button class="arrow arrow-left" onclick="prevGame()">&#x25C0;</button>
+
+    <div class="carousel-container">
+        <div class="game-display" id="gameDisplay"></div>
+    </div>
+
+    <button class="arrow arrow-right" onclick="nextGame()">&#x25B6;</button>
+</div>
+
+<div class="categories-button">
+    <button>categorias</button>
+</div>
+
+<div class="categories">
+    <div class="category">categoria 1</div>
+    <div class="category">categoria 2</div>
+    <div class="category">categoria 3</div>
+</div>
+
+<section class="hero">
+    <div class="container">
+        <h2>Explore a História dos Videogames</h2>
+    </div>
+</section>
+
+<script>
+const games = [
     {% for s in slideshows %}
-      {
+    {
+        id: "{{ s.id }}",
         title: "{{ s.titulo|escapejs }}",
         image: "{{ s.imagem.url|escapejs }}"
-      }{% if not forloop.last %},{% endif %}
+    }{% if not forloop.last %},{% endif %}
     {% endfor %}
-  ];
+];
 </script>
 
 <script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/portal.js' %}"></script>
 
 {% endblock %}

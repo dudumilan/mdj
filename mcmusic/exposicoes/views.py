@@ -17,3 +17,6 @@ def visita_virtual(request):
 
 def contato(request):
     return render(request, 'contato.html')
+def detalhe(request, id):
+    slide = get_object_or_404(Slideshow, id=id)
+    return render(request, 'detalhe.html', {'slide': slide})
