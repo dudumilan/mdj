@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Press Start 2P', cursive;
+    background: black;
+}
+
+.menu-bg {
+    background: url("{% static 'jogos/sonic/imagens/menu_background.png' %}") center / cover no-repeat;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    animation: float 6s infinite ease-in-out alternate;
+    opacity: 0.8;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(15px); }
+}
+
+.menu-container {
+    position: relative;
+    text-align: center;
+    height: 100vh;         
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    margin-top: 0;
+}
+
+.title {
+    font-size: 36px;
+    color: yellow;
+    text-shadow: 4px 4px blue;
+    opacity: 0;
+    transform: translateX(-200px);
+    animation: titleSlideIn 1s forwards, titleSwing 2s 1s infinite alternate ease-in-out;
+}
+
+@keyframes titleSlideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes titleSwing {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(0); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.options {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.option {
+    font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.option:nth-child(1) { animation-delay: 1s; }
+.option:nth-child(2) { animation-delay: 1.3s; }
+.option:nth-child(3) { animation-delay: 1.6s; }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.option.selected {
+    color: yellow;
+    text-shadow: 3px 3px black;
+    transform: translateX(10px);
+    opacity: 1;
+}
+
+.mini-sonic {
+    width: 40px;
+    margin-right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.option.selected .mini-sonic {
+    opacity: 1;
+}
+
+.sonic-sprite {
+    width: 150px;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+/* Efeito de fade e slide ao sair do menu */
+.menu-container.fade-out {
+    animation: fadeOutMenu 0.8s forwards;
+}
+
+@keyframes fadeOutMenu {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-50px); }
+}
+
+.menu-bg.fade-out {
+    animation: fadeOutBg 0.8s forwards;
+}
+
+@keyframes fadeOutBg {
+    0% { opacity: 0.8; }
+    100% { opacity: 0; }
+}

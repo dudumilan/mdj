@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+
+
+    <link rel="stylesheet" href="/static/{{ css }}">
+</head>
+<body>
+
+    
+    <audio id="musica" autoplay loop>
+        <source src="/static/{{ musica }}" type="audio/mpeg">
+    </audio>
+
+    
+    {% block conteudo %}{% endblock %}
+
+    <script src="/static/jogos/animacoes.js"></script>
+
+</body>
+</html>

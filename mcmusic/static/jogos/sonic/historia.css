@@ -1,0 +1,76 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Press Start 2P', cursive;
+    overflow: hidden;
+    background: #000;
+}
+
+.fase-bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fase-title {
+    font-size: 60px;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+    animation: zoomIn 1s forwards;
+    text-align: center;
+}
+
+@keyframes zoomIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.fase-title.fade-out {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.2); }
+}
+
+.story-text {
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+    text-align: center;
+    max-width: 80%;
+    margin-top: 20px;
+}
+
+.fade-out-text {
+    animation: fadeOutText 0.8s forwards;
+}
+
+@keyframes fadeOutText {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background: url("{% static 'jogos/sonic/imagens/back_icon.png' %}") no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.back-button:hover {
+    opacity: 1;
+}

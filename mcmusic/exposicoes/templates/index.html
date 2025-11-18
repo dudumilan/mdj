@@ -1,9 +1,42 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block 'head' %}
+{% block head %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" href="{% static 'css/portal.css' %}">
+<style>
+/* estilo rápido para o carousel */
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.game {
+    width: 300px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.main-game {
+    width: 400px;
+    height: 550px;
+    transform: scale(1.1);
+}
+
+.side-game:hover {
+    transform: scale(1.05);
+}
+
+.arrow {
+    font-size: 2rem;
+    cursor: pointer;
+}
+</style>
 {% endblock %}
 
 {% block content %}
@@ -16,9 +49,6 @@
 </div>
 
 <div class="carousel-section">
-    <div class="gradient-left"></div>
-    <div class="gradient-right"></div>
-
     <button class="arrow arrow-left" onclick="prevGame()">&#x25C0;</button>
 
     <div class="carousel-container">
@@ -28,21 +58,16 @@
     <button class="arrow arrow-right" onclick="nextGame()">&#x25B6;</button>
 </div>
 
-<div class="categories-button">
-    <button>categorias</button>
-</div>
-
-<div class="categories">
-    <div class="category">categoria 1</div>
-    <div class="category">categoria 2</div>
-    <div class="category">categoria 3</div>
-</div>
-
 <section class="hero">
     <div class="container">
         <h2>Explore a História dos Videogames</h2>
     </div>
 </section>
+
+<!-- Overlay do portal -->
+<div id="portalOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; z-index:1000; justify-content:center; align-items:center;">
+    <div id="portalZoom" style="width:500px; height:500px; background-size:cover; background-position:center;"></div>
+</div>
 
 <script>
 const games = [
@@ -50,13 +75,96 @@ const games = [
     {
         id: "{{ s.id }}",
         title: "{{ s.titulo|escapejs }}",
-        image: "{{ s.imagem.url|escapejs }}"
+        image: "{{ s.imagem.url|escapejs }}",
+        slug: "{{ s.slug|default:s.titulo|escapejs }}"
     }{% if not forloop.last %},{% endif %}
     {% endfor %}
 ];
-</script>
 
-<script src="{% static 'js/main.js' %}"></script>
-<script src="{% static 'js/portal.js' %}"></script>
+let currentIndex = 0;
+
+// Map para jogos especiais como Sonic
+const fixedLinks = {
+    "sonic": "{% url 'sonic_intro' %}",
+    "streetfighter2": "{% url 'streetfighter2_intro' %}",
+};
+
+function renderGames() {
+    const display = document.getElementById("gameDisplay");
+    display.innerHTML = '';
+
+    if (!games || games.length === 0) {
+        display.innerHTML = "<p>Nenhum jogo encontrado.</p>";
+        return;
+    }
+
+    const prevIndex = (currentIndex - 1 + games.length) % games.length;
+    const nextIndex = (currentIndex + 1) % games.length;
+
+    const prevGame = games[prevIndex];
+    const mainGame = games[currentIndex];
+    const nextGameObj = games[nextIndex];
+
+    // Jogo anterior
+    const prevDiv = document.createElement("div");
+    prevDiv.className = "game side-game";
+    prevDiv.style.backgroundImage = `url('${prevGame.image}')`;
+    prevDiv.onclick = prevGameClick;
+    display.appendChild(prevDiv);
+
+    // Jogo principal
+    const mainDiv = document.createElement("div");
+    mainDiv.className = "game main-game";
+    mainDiv.style.backgroundImage = `url('${mainGame.image}')`;
+    mainDiv.onclick = () => openGame(mainGame);
+    display.appendChild(mainDiv);
+
+    // Próximo jogo
+    const nextDiv = document.createElement("div");
+    nextDiv.className = "game side-game";
+    nextDiv.style.backgroundImage = `url('${nextGameObj.image}')`;
+    nextDiv.onclick = nextGame;
+    display.appendChild(nextDiv);
+}
+
+function nextGame() {
+    currentIndex = (currentIndex + 1) % games.length;
+    renderGames();
+}
+
+function prevGame() {
+    currentIndex = (currentIndex - 1 + games.length) % games.length;
+    renderGames();
+}
+
+function prevGameClick() {
+    prevGame();
+}
+
+function openGame(game) {
+    const url = fixedLinks[game.slug.toLowerCase()] || `/jogo/${game.id}/`;
+    openPortal(url, game.image);
+}
+
+function openPortal(url, imgUrl) {
+    const portal = document.getElementById("portalOverlay");
+    const portalZoom = document.getElementById("portalZoom");
+
+    if (!portal || !portalZoom) {
+        window.location.href = url;
+        return;
+    }
+
+    portal.style.display = "flex";
+    portalZoom.style.backgroundImage = `url('${imgUrl}')`;
+
+    setTimeout(() => {
+        window.location.href = url;
+    }, 800);
+}
+
+// Inicializa o carousel
+window.addEventListener("load", renderGames);
+</script>
 
 {% endblock %}

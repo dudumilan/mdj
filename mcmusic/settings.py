@@ -130,6 +130,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'mcmusic/static'),)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -150,3 +151,4 @@ MESSAGE_TAGS = {
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'area_restrita'
 LOGOUT_REDIRECT_URL = 'login'
+

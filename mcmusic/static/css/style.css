@@ -151,6 +151,8 @@ body {
     background-position: center;
     border-radius: 10px;
     transition: transform 0.3s ease;
+    cursor: pointer;    
+    pointer-events: auto;
   }
 
   .main-game {

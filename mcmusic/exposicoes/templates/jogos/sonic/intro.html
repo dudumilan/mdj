@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sonic The Hedgehog</title>
+    <link rel="stylesheet" href="{% static 'jogos/sonic/sonic.css' %}">
+</head>
+<body>
+
+<video autoplay muted playsinline id="bgVideo">
+    <source src="{% static 'jogos/sonic/intro.mp4' %}" type="video/mp4">
+</video>
+
+<audio id="intro-music" src="{% static 'jogos/sonic/musicas/intro.mp3' %}"></audio>
+
+<div id="transition"></div>
+
+<script src="{% static 'jogos/sonic/intro.js' %}"></script>
+
+</body>
+</html>

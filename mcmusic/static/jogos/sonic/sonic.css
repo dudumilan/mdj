@@ -1,0 +1,34 @@
+/* remove qualquer margem, padding e espaço da página */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+}
+
+/* container do vídeo — garante que ocupa 100% da tela */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* o vídeo em si — AGORA com o ID certo */
+#bgVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* preenche a tela inteira */
+    object-position: center; /* centraliza */
+    border: none !important;
+    outline: none !important;
+    background: black;
+}

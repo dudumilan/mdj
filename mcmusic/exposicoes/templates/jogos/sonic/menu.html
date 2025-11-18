@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sonic - Menu</title>
+    <link rel="stylesheet" href="{% static 'jogos/sonic/menu.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  
+    <audio id="menu-music" src="{% static 'jogos/sonic/musicas/green_hill.mp3' %}" autoplay loop></audio>
+
+    
+
+    <audio id="select-sound" src="{% static 'jogos/sonic/musicas/selecionar.mp3' %}"></audio>
+
+   
+    <div class="menu-bg"></div>
+
+  
+    <div class="menu-container">
+        <h1 class="title">SONIC THE HEDGEHOG</h1>
+
+        <div class="options">
+            <div class="option selected" data-action="start" data-url="{% url 'sonic_historia' %}">
+                <img src="{% static 'jogos/sonic/imagens/moeda.png' %}" class="mini-sonic">
+                START GAME
+            </div>
+        </div>
+
+
+
+    <script src="{% static 'jogos/sonic/menu.js' %}"></script>
+</body>
+</html>
