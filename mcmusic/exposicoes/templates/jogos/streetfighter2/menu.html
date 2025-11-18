@@ -1,19 +1,78 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Street Fighter 2 - Menu</title>
-    <link rel="stylesheet" href="{% static 'jogos/streetfighter2/streetfighter2.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Personagem - SF2</title>
+    <link rel="stylesheet" href="{% static 'jogos/streetfighter2/menu.css' %}">
 </head>
 <body>
-    <div id="menuContainer">
-        <h1>Street Fighter 2: Champion Edition</h1>
-        <ul>
-            <li><a href="#">Iniciar Jogo</a></li>
-            <li><a href="#">Opções</a></li>
-            <li><a href="#">Créditos</a></li>
-        </ul>
+    <div class="sf2-menu-container">
+        <h1>Seleção de Personagem</h1>
+
+       <div class="sf2-grid">
+<div class="sf2-preview">
+    <img id="previewImage" src="" alt="Preview">
+</div>
+    <div class="sf2-item" data-sound="pop1" data-character="ryu">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">Ryu</div>
     </div>
+    <div class="sf2-item" data-sound="pop1" data-character="ken">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">Ken</div>
+    </div>
+    <div class="sf2-item" data-sound="pop1" data-character="chunli">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">chunli</div>
+    </div>
+    <div class="sf2-item" data-sound="pop1" data-character="zangief">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">Zangief</div>
+    </div>
+    <div class="sf2-item" data-sound="pop1" data-character="guile">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">Guile</div>
+    </div>
+    <div class="sf2-item" data-sound="pop1" data-character="blanka">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">Blanka</div>
+    </div>
+    <div class="sf2-item" data-sound="pop1" data-character="dhalsim">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">Dhalsim</div>
+    </div>
+    <div class="sf2-item" data-sound="pop1" data-character="honda">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">honda</div>
+    </div>
+    <div class="sf2-item" data-sound="pop1" data-character="balrog">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">Balrog</div>
+    </div>
+    <div class="sf2-item" data-sound="pop1" data-character="vega">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">Vega</div>
+    </div>
+    <div class="sf2-item" data-sound="pop1" data-character="sagat">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">Sagat</div>
+    </div>
+    <div class="sf2-item" data-sound="pop1" data-character="bison">
+        <div class="sf2-image"></div>
+        <div class="sf2-label">M. Bison</div>
+    </div>
+</div>
+
+        <div class="vs-animation">VS</div>
+    </div>
+
+    <!-- Sons SF2 -->
+    <audio id="pop1" src="{% static 'jogos/streetfighter2/sons/escolher.mp3' %}"></audio>
+    <audio id="confirm" src="{% static 'jogos/streetfighter2/sons/escolhido.mp3' %}"></audio>
+
+
+    <script src="{% static 'jogos/streetfighter2/menu.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Fighter 2 - História</title>
+    <link rel="stylesheet" href="{% static 'jogos/streetfighter2/historia.css' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000 url('{% static "jogos/streetfighter2/background.jpg" %}') center/cover no-repeat;
+            font-family: 'Press Start 2P', monospace;
+            color: #FFD700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .historia-container {
+            background: rgba(0,0,0,0.7);
+            padding: 30px;
+            border: 3px solid #FF4500;
+            border-radius: 10px;
+            max-width: 800px;
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+        }
+
+        h1 {
+            color: #FF4500;
+            text-shadow: 2px 2px #000;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9);}
+            to { opacity: 1; transform: scale(1);}
+        }
+
+        /* Botão de voltar */
+        .btn-voltar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #FF4500;
+            color: #fff;
+            padding: 10px 15px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.7rem;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid #FFD700;
+            transition: 0.2s;
+            z-index: 100;
+        }
+
+        .btn-voltar:hover {
+            background-color: #FFD700;
+            color: #000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'home' %}" class="btn-voltar">VOLTAR</a>
+    
+    <div class="historia-container">
+        <h1>Street Fighter II</h1>
+        <p>Lançado em 1991 pela <strong>Capcom</strong>, Street Fighter II revolucionou os jogos de luta, trazendo combates um contra um com personagens únicos e golpes especiais.</p>
+        <p>O jogo foi inicialmente lançado para os arcades, mas depois chegou a consoles como o <strong>Super Nintendo Entertainment System (SNES)</strong>, ganhando enorme popularidade mundial.</p>
+        <p>Street Fighter II é famoso por seus personagens icônicos como Ryu, Ken, Chun-Li e Zangief, cada um com estilos de luta distintos.</p>
+        <p>O sucesso do jogo consolidou a Capcom como referência em jogos de luta e criou uma das franquias mais duradouras do mundo dos games.</p>
+    </div>
+</body>
+</html>

@@ -24,7 +24,10 @@ def streetfighter2_menu(request):
     return render(request, 'jogos/streetfighter2/menu.html')
 
 
+def streetfighter2_historia(request):
+    return render(request, 'jogos/streetfighter2/historia.html')
 def home(request):
+    
     slideshows = Slideshow.objects.all()
     print(slideshows)
     return render(request,'index.html',{'slideshows':slideshows})

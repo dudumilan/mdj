@@ -13,6 +13,7 @@ urlpatterns = [
     path('jogo/sonic/historia/',views.sonic_historia, name='sonic_historia'),
     path('jogo/streetfighter2/', views.streetfighter2_intro, name='streetfighter2_intro'),
     path('jogo/streetfighter2/menu/', views.streetfighter2_menu, name='streetfighter2_menu'),
+    path('jogo/streetfighter2/historia/', views.streetfighter2_historia, name='streetfighter2_historia'),
     path('jogo/<int:id>/', views.jogo_detalhe, name='jogo_detalhe'),
     path('jogo/<str:nome>/', views.jogo, name='jogo'),
     path('', views.home, name='home'),

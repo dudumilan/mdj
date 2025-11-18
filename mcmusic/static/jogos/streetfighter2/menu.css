@@ -1,34 +1,151 @@
-/* remove qualquer margem, padding e espaço da página */
-html, body {
+* {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: black;
+    box-sizing: border-box;
 }
 
-/* container do vídeo — garante que ocupa 100% da tela */
-.video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
+body {
+    background: #000 url('{% static "jogos/streetfighter2/background_map.jpg" %}') center/cover no-repeat;
+    font-family: 'Press Start 2P', monospace;
+    color: #fff;
     height: 100vh;
     overflow: hidden;
-    z-index: -1;
+    position: relative;
 }
 
-/* o vídeo em si — AGORA com o ID certo */
-#bgVideo {
+/* Container centralizado próximo ao rodapé */
+.sf2-menu-container {
+    text-align: center;
     position: absolute;
-    top: 0;
-    left: 0;
+    bottom: 80px;  /* Ajuste a distância do rodapé */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+/* Grid 6x2 */
+.sf2-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 150px);
+    grid-template-rows: repeat(2, 150px);
+    grid-gap: 20px;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* Itens do grid */
+.sf2-item {
+    position: relative;
+    cursor: pointer;
+    border: 3px solid #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+/* Hover ou selecionado */
+.sf2-item.selected,
+.sf2-item:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px #FFD700, 0 0 40px #FF4500;
+    border-color: yellow;
+}
+
+/* Imagem do personagem */
+.sf2-image {
+    width: 150px;
+    height: 150px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: transform 0.3s;
+}
+
+/* Label com nome */
+.sf2-label {
+    background: rgba(0,0,0,0.6);
+    padding: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px #000;
+}
+
+/* VS piscando */
+.vs-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    font-weight: bold;
+    color: red;
+    text-shadow: 2px 2px 5px #000;
+    animation: blink 1s infinite;
+    z-index: 0;
+}
+
+/* Cursor piscando no personagem selecionado */
+.cursor {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border: 4px solid #FFD700;
+    pointer-events: none;
+    animation: blinkCursor 0.6s infinite;
+    z-index: 2;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+@keyframes blinkCursor {
+    0%, 50%, 100% { border-color: #FFD700; }
+    25%, 75% { border-color: #FF4500; }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.sf2-item[data-character="ryu"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/ryu.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="ken"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/ken.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="chunli"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/chunli.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="zangief"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/zangief.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="blanka"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/blanka.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="guile"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/guile.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="dhalsim"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/dhalsim.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="e-honda"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/honda.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="vega"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/vega.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="balrog"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/balrog.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="sagat"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/sagat.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="bison"] .sf2-image { background-image: url("/static/jogos/streetfighter2/imagens/bison.png"); background-size: cover; background-position: center; }
+.sf2-item[data-character="{{ character }}"] .sf2-image {
+    background-image: url("{% static 'jogos/streetfighter2/imagens/{{ character }}.png' %}");
+    background-size: cover;
+    background-position: center;
+}
+.sf2-preview {
+    position: absolute;
+    bottom: 150px; /* acima do grid */
+    left: 50px;     /* distancia da borda esquerda */
+    width: 220px;   /* tamanho da imagem grande */
+    height: 220px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.sf2-preview img {
     width: 100%;
     height: 100%;
-    object-fit: cover;       /* preenche a tela inteira */
-    object-position: center; /* centraliza */
-    border: none !important;
-    outline: none !important;
-    background: black;
+    object-fit: contain;
+    transition: transform 0.2s;
 }

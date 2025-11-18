@@ -9,18 +9,13 @@
 </head>
 <body>
     <div class="video-background">
-        <video id="bgVideo" autoplay muted loop playsinline>
-
-        <source src="{% static 'jogos/streetfighter2/intro.mp4' %}" type="video/mp4">
-    
+        <video id="bgVideo" muted loop playsinline>
+            <source src="{% static 'jogos/streetfighter2/intro.mp4' %}" type="video/mp4">
         </video>
     </div>
-    <audio id="bgMusic" autoplay loop>
-    <source src="{% static 'jogos/streetfighter2/musicas/intro.mp3' %}" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-</audio>
 
+    <audio id="bgMusic" src="{% static 'jogos/streetfighter2/musicas/intro.mp3' %}" loop></audio>
 
-    <script src="{% static 'jogos/streetfighter2/streetfighter2.js' %}"></script>
+    <script src="{% static 'jogos/streetfighter2/intro.js' %}"></script>
 </body>
 </html>
