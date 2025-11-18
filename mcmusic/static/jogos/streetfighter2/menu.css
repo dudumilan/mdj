@@ -5,7 +5,7 @@
 }
 
 body {
-    background: #000 url('{% static "jogos/streetfighter2/background_map.jpg" %}') center/cover no-repeat;
+    background: #000 url('/static/jogos/streetfighter2/mapa.png') center/cover no-repeat;
     font-family: 'Press Start 2P', monospace;
     color: #fff;
     height: 100vh;

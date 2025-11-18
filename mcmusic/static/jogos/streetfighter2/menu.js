@@ -74,7 +74,7 @@ function confirmSelection() {
     setTimeout(() => {
        
         window.location.href = "/jogo/streetfighter2/historia/";
-    }, 5000);
+    }, 3100);
 }
 
 
