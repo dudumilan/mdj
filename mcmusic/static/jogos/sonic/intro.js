@@ -5,9 +5,9 @@ window.addEventListener('load', () => {
 
     document.body.addEventListener('click', () => {
         if (!clicked) {
-            // Primeira vez: toca vídeo e música
+        
             if (video) {
-                video.muted = false; // caso queira som do vídeo também
+                video.muted = false; 
                 video.play().catch(err => console.log("Erro ao tocar vídeo:", err));
             }
             if (music) {
@@ -15,8 +15,8 @@ window.addEventListener('load', () => {
             }
             clicked = true;
         } else {
-            // Segunda vez: troca de página
-            window.location.href = '/outra-pagina/'; // substitua pela URL desejada
+          
+            window.location.href = 'menu/'; 
         }
     });
 });

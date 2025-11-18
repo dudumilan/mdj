@@ -113,7 +113,6 @@ body {
     100% { transform: translateY(-10px); }
 }
 
-/* Efeito de fade e slide ao sair do menu */
 .menu-container.fade-out {
     animation: fadeOutMenu 0.8s forwards;
 }

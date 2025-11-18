@@ -1,33 +1,32 @@
 const items = document.querySelectorAll('.sf2-item');
 let selectedIndex = 0;
 
-// Tocar som
+
 function playSound(id) {
     const audio = document.getElementById(id);
     if(audio) {
-        audio.currentTime = 0;
+        audio.currentTime = 0.1;
         audio.play();
     }
 }
 
-// Tocar "ready" ao carregar a tela
 window.addEventListener('load', () => {
     playSound('ready');
 });
 
-// Mostrar itens sequencialmente com som de pop
+
 items.forEach((item, index) => {
     setTimeout(() => {
         item.style.opacity = '1';
         item.style.transform = 'scale(1)';
         playSound(item.dataset.sound);
-    }, index * 200); // cada item 200ms após o anterior
+    }, index * 200); 
 });
 
-// Seleciona primeiro personagem
+
 items[selectedIndex].classList.add('selected');
 
-// Hover do mouse
+
 items.forEach((item, index) => {
     item.addEventListener('mouseenter', () => {
         items[selectedIndex].classList.remove('selected');
@@ -41,7 +40,7 @@ items.forEach((item, index) => {
     });
 });
 
-// Navegação por teclado
+
 document.addEventListener('keydown', e => {
     items[selectedIndex].classList.remove('selected');
     const rowLength = 4;
@@ -68,18 +67,18 @@ document.addEventListener('keydown', e => {
     playSound(items[selectedIndex].dataset.sound);
 });
 
-// Função confirmação
+
 function confirmSelection() {
     playSound('confirm');
     vsZoom();
     setTimeout(() => {
-        // Redireciona para historia.html independentemente do personagem
+       
         window.location.href = "/jogo/streetfighter2/historia/";
-    }, 500);
+    }, 5000);
 }
 
 
-// VS animação
+
 function vsZoom() {
     const vs = document.querySelector('.vs-animation');
     vs.style.transform = 'translate(-50%, -50%) scale(1.5)';
@@ -95,20 +94,20 @@ function updatePreview() {
     previewImage.src = `/static/jogos/streetfighter2/imagens/preview/${character}.png`;
 }
 
-// Chame sempre que mudar de personagem
+
 items.forEach((item, index) => {
     item.addEventListener('mouseenter', () => {
         items[selectedIndex].classList.remove('selected');
         selectedIndex = index;
         item.classList.add('selected');
         playSound(item.dataset.sound);
-        updatePreview(); // Atualiza preview
+        updatePreview();
     });
 });
 
 document.addEventListener('keydown', e => {
     items[selectedIndex].classList.remove('selected');
-    const rowLength = 6; // agora é 2x6
+    const rowLength = 6; 
 
     let moved = false;
 
@@ -148,5 +147,4 @@ document.addEventListener('keydown', e => {
     if(moved) updatePreview();
 });
 
-// Inicializa o preview
 updatePreview();

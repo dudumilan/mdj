@@ -5,11 +5,11 @@ const menuMusic = document.getElementById('menu-music');
 const selectSound = document.getElementById('select-sound');
 selectSound.volume = 0.3
 
-// Define o volume da música
+
 menuMusic.volume = 0.1;
 menuMusic.pause();
 
-// Toca a música ao clicar na tela
+
 document.body.addEventListener('click', () => {
     menuMusic.play();
 }, { once: true });
